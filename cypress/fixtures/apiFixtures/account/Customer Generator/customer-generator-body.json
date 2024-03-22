@@ -1,0 +1,16 @@
+{
+    "UserFirstName": "Abc",
+    "UserMiddleName": "",
+    "UserLastName": "",
+    "UserEmail": "",
+    "UserPassword": "",
+    "BilingAddressContactEmail": "",
+    "BilingAddressContactName": "",
+    "BilingAddressCountryId": "",
+    "BilingAddressStreetAdress" : "",
+    "BilingAddressStreetAddress2" : "",
+    "BilingAddressStateId": "",
+    "BilingAddressCity": "",
+    "BilingAddressPostalCode": ""
+    
+}

@@ -14,7 +14,24 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+// import './commands/api-call-commands'
+// import './commands/commands'
+// //index.js inside support folder
+// import 'cypress-mochawasome-reporter/register'
+
+// require('./commands/api-call-commands')
+// require('./commands/commands')
+
+// const registerCypressgrep = require('@cypress/grep')
+// registerCypressgrep()
+
+// require('cypress-xpath')
+
+// chai.use(require('chai-json-scheme'))
+
+// registerCypressgrep.Keyboard.defaults({
+//     keystrokeDelay: 0,
+// })
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

@@ -1,28 +1,127 @@
-describe('Base Component Tests', () => {
-    beforeEach(() => {
-      // Set up tasks that need to be performed before each test case
-      // For example, visit the webpage containing the base component
-      cy.visit('https://rrangiloshop.in/');
-    });
+export class BaseComponent{
+  constructor(locator){
+    this.locator = locator
+  }
+  getFileInput(){
+    return cy.get('locator')
+  }
+  locator(){
+    return this.locator
+  }
+  Object(){
+    return cy.get(this.locator)
+  }
+
+  hasText(text){
+    cy.get(this.locator) 
+    .should('exist')
+    .invoke('show')
+    .scrollIntoView()
+    .should('be visible')
+    .should('have.text', text)
+  }
   
-    it('should be visible on the page', () => {
-      // Assertion to check if the base component is visible on the page
-      cy.get('.base-component').should('be.visible');
-    });
-  
-    it('should have correct content', () => {
-      // Assertion to check if the base component contains correct content
-      cy.get('.base-component').should('contain', 'Expected Content');
-    });
-  
-    it('should respond to user interaction', () => {
-      // Interaction with the base component, for example, clicking a button
-      cy.get('.base-component button').click();
-  
-      // Assertion to verify the result of the interaction
-      cy.get('.base-component .result').should('contain', 'Expected Result');
-    });
-  
-    // Add more test cases as needed
-  });
-  
+  verifyRegexMatch(regexExpression){
+    //cy.get(this.locator).contains(regedxExpression)
+  }
+
+  doesNotHaveText(text){
+    cy.get(this.locator)
+    .should('exist')
+    .invoke('show')
+    .scrollIntoView()
+    .should('be.visible')
+    .should('not.have.text', text)
+  }
+
+  containsText(text){
+    cy.get(this.locator)
+    .should('exist')
+    .invoke('show')
+    .should('be.visible')
+    .should('contain.text', text)
+  }
+
+  click(){
+    cy.get(this.locator)
+    .should('exist')
+    .invoke('show')
+    .should('be.visible')
+    .click(
+      {
+        force: true,
+      },
+      {
+        retrices: 2, 
+      }
+    )
+  }
+
+  clickIfNotVisible(conditionLocator){
+    cy.get(conditionLocator.locator).then(($btn) =>{
+        if(!$btn.is('.visible')){
+          this.click()
+        }
+    })
+  }
+
+  scroll(){
+    cy.get(this.locator),should('have.length',1).scrollIntoView({
+      force:true,
+    })
+    return this
+  }
+
+  doubleClick(){
+    cy.get(this.locator).dbclick({
+      force: true,
+    })
+    //cy.get(this.locator).rightclick()
+  }
+
+  rightclick() {
+    cy.get(this.locator).rightclick()
+  }
+
+  isDisplayed(){
+    cy.get(this.locator)
+    .scrollIntoView({
+      force: true,
+    })
+    .should('be.visible')
+  }
+
+  clickIfContainsText(text){
+    cy.get(this.locator + `.contains(${text})`)
+    .should('exist', "Element doesn't exist")
+    .invoke('show')
+    .click(
+      {
+        force: true,
+      },
+      {
+        retrices: 2,
+      }
+    )
+  }
+
+  isDisabled(){
+    cy.get(this.locator).should('have.class', 'disabled')
+  }
+
+  isEnabled(){
+    cy.get(this.locator).should('not.have.class', 'disabled')
+  }
+
+  clickWhenVisible(){
+    cy.get(this.locator).should('be.visible').click()
+  }
+
+  attachFile(filePath){
+    cy.get(this.locator)
+    .should('be.visible')
+    .attachFile('username-fixture.csv',{
+      subjectType: 'drag-n-drop'
+    })
+  }
+}

@@ -23,3 +23,117 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+
+export default class Commands{}
+import {loginHandler} from './login-handler'
+
+Cypress.Commands.add('getItemInsideOfIframe', (iframeLocator, itemLocator)=>{
+    cy.get(iframeLocator).then(function (iFrame){
+        const iFrameContent = iFrame.contents().find('body')
+        return cy.wrap(iFrameContent).find(itemLocator)
+    })
+})
+
+Cypress.Commands.add('verifyShouldNotIncludeText', (locator, text) =>{
+    cy.get(element,{
+        timeout: forcedTimeOut,
+    })
+        .scrollIntoView({
+            force: true,
+        })
+        .should('be.visible')
+        .should('not.include.text', text,{
+            force:true,
+        })
+})
+
+Cypress.Commands.add('isEnable', (locator, expected) =>{
+    const condition = expected ? 'be.enabled' : 'be.disabled'
+    cy.get(locator)
+        .scrollIntoView({
+            force: true,
+        })
+        .should(condition)
+})
+
+Cypress.Commands.add('hover', (locator) =>{
+    cy.get(locator).trigger('mouseover')
+})
+
+Cypress.Commands.add('clearAllBrowserData', (endpoint, apiAuthToken, body) => {
+    cy.clearLocalStorage()
+    cy.clearCookies()
+    cy.window().then((win)=>{
+        win.sessionStorage.clear()
+    })
+})
+
+Cypress.Commands.add('uiLogin', (credentials) =>{
+    loginHandler(credentials, true)
+})
+
+Cypress.Commands.add('apiLogin', (credentials) =>{
+    loginHandler(credentials, false)
+})
+
+Cypress.Commands.add(
+    'postRequest',
+    (endpoint, body, apiAuthToken, formValue = false) =>{
+        return apiCall.post(endpoint, body, apiAuthToken, formValue)
+    }
+)
+
+Cypress.Commands.add('getRequest', (endpoint, apiAuthToken) =>{
+    return apiCall.get(endpoint, apiAuthToken)
+})
+
+Cypress.Commands.add('deleteRequest', (endpoint, apiAuthToken) =>{
+    return apiCall.delete(endpoint, apiAuthToken)
+})
+
+Cypress.Commands.add(
+    'putRequest',
+    (endpoint, body, apiAuthToken, formValue = false) =>{
+        return apiCall.put(endpoint, body, apiAuthToken, formValue)
+    }
+)
+
+Cypress.Commands.add(
+    'patchRequest',
+    (endpoint, body, apiAuthToken, formValue = false) =>{
+        return apiCall.patch(endpoint, body, apiAuthToken, formValue)
+    }
+)
+
+Cypress.Commands.add('getApiAuthToken', () =>{
+    cy.get('@apiAuthToken').then((apiAuthToken) =>{
+        return{
+            token: apiAuthToken,
+            decodedToken: jwt_decode(apiAuthToken),
+        }
+    })
+})
+
+Cypress.Commands.add('setApiAuthToken', (token) =>{
+    cy.wrap(token).as('apiAuthToken')
+})
+
+Cypress.Commands.add('interceptWithFixture', (method, urlPath, fixtureFile) =>{
+    cy.intercept(
+        {
+            method: method,
+            url: `${Cypress.env('api_server')}${urlPath}`
+        },
+        {fixture: fixtureFile}
+    )
+})
+
+Cypress.Commands.add('ignoreRefreshTokenRequest', ()=>{
+    cy.intercept(
+        'POST',
+        `${Cypress.env('api-server')}/api/Account/refresh`,
+        (req) => req.destroy()
+    ).as('ignoreRefreshTokenRequest')
+})
