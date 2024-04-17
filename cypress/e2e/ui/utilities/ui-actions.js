@@ -149,8 +149,319 @@ function ValidationsType(field, data, message) {
         case 'datefuture':
             value = '21' + ' '+ 'Mar' + ' ' + '2045'
             break
-        
-
-
+        case 'maxNumber' :
+            value = '900000000000000000'
+            break
+        case 'minNumber' :
+            value = '1'
+            break
+        case 'empty' :
+            value = ' '
+            break
+        case 'characters' :
+            value = faker.datatype.uuid()
+            break
+        case 'maxText' :
+            value = faker.lorem.sentence()
+            break
+        case 'invalidText':
+            value = faker.name.jobArea()
+            break
+        case 'invalidNumberFormat' :
+            value = '3.1,2'
+            break
+        case 'negativeNumber' :
+            value = '-1'
+            break
     } 
+    cy.log(value)
+    cy.get(field, {
+        timeout: forcedTimeout,
+    })
+
+    .scrollIntoView({
+        force: true,
+    })
+    .invoke('show')
+    .should('be.visible', 'Element is not visible')
+    .should('exist', "Element doesn't exists")
+    .clear()
+    .type(
+        value,
+        {
+            force: true,
+        },
+        {
+            delay: 100, 
+        },
+        {
+            log: true,
+        },
+        {
+            retrices: 2,
+        }
+    )
+    .type('Cypress.io{enter}')
+    .should('have.value', value)
+
+    cy.contains(message).should('be.visible', "Element doesn't exist")
 }
+
+exports.ValidationsType = ValidationsType
+
+function TypeDropDownlist(element, text){
+    Click(element)
+    cy.contains(text, {
+        timeout: forcedTimeout,
+    })
+    cy.get(element, {
+        timeout: forcedTimeout,
+    })
+        .scrollIntoView({
+            force: true,
+        })
+        .should('be.visible')
+        .type(text, {
+            force: true,
+        })
+    cy.get(element).type('{enter}', {
+            force: true,
+    })
+}
+
+exports.TypeDropDownlist = TypeDropDownlist
+
+exports.TypeInsideFrame = TypeInsideFrame
+
+function TypeInsideFrame(element, text) {
+    cy.get(element).then(function ($iFrame) {
+        const iFrameContent = $iFrame.contents().find('body')
+        cy.wrap(iFrameContent).click().type(text)
+    })
+}
+
+function VerifyShouldIncludeText(element, text) {
+    cy.get(element, {
+        timeout:forcedTimeout,
+    })
+    .click()
+    .scrollIntoView({
+        force: true,
+    })
+    .should('be.visible')
+    .should('have.text', text, {
+        force: true,
+    })
+}
+
+exports.VerifyShouldIncludeText = VerifyShouldIncludeText
+
+function VerifyShouldHaveText(element, text) {
+    cy.get(element, {
+        timeout: forcedTimeout,
+    })
+        .click()
+        .scrollIntoView({
+            force: true,
+        })
+        .should('be.visible')
+        .should('have.text', text, {
+            force: true,
+        })
+}
+
+exports.VerifyShouldHaveText = VerifyShouldHaveText
+
+function VerifyShouldNotHaveText(element, text){
+    cy.get(element, {
+        timeout: forcedTimeout,
+    })
+        .click()
+        .scrollIntoView({
+            force: true,
+        })
+        .should('be.visible')
+        .should('not.have.text', text, {
+            force: true,
+        })
+}
+
+exports.VerifyShouldNotHaveText = VerifyShouldNotHaveText
+
+function VerifyIsDisplayed(element){
+    cy.get(element, {
+        timeout: forcedTimeout,
+    })
+        .scrollIntoView({
+            force: true,
+        })
+        .should('be.visible')
+}
+
+exports.VerifyIsDisplayed = VerifyIsDisplayed
+
+function VerifyIsNotDisplayed(element) {
+    cy.get(element, {
+        timeout: forcedTimeout,
+    })
+        .scrollIntoView({
+            force: true,
+        })
+        .should('not.be.visible')
+}
+exports.VerifyIsNotDisplayed = VerifyIsNotDisplayed
+
+function VerifyShouldHaveLenght(element, lenght){
+    cy.get(element, {
+        timeout: forcedTimeout,
+    })
+    .should('be.visible')
+    .should('have.length', lenght)
+}
+exports.VerifyShouldHaveLenght = VerifyShouldHaveLenght
+
+exports.VerifyShouldHaveLenghtAbove = VerifyShouldHaveLenghtAbove
+
+function VerifyShouldHaveLenghtAbove(element, elementValue){
+    cy.get(element, {
+        timeout: forcedTimeout,
+    })
+        .invoke('text')
+        .then((value) => (value= value.replace(',', '')))
+        .then(parseFloat)
+        .should((value) => {
+            expect(elementValue).to.eq(value)
+        })
+}
+
+exports.VerifyFloatValue = VerifyFloatValue
+
+function VerifyFloatValue(element, lenght){
+    cy.get(element, {
+        timeout: forcedTimeout,
+    })
+        .should('be.visible')
+        .should('have.length.of.at.above', lenght)
+}
+
+function VerifyToasterDisplayed(type, message) {
+    cy.log(`Check Toaster ${type} Message`)
+    cy.wait(2000)
+    toasterComponent.hasText(type)
+    toasterComponent.hasText(message)
+}
+exports.VerifyToasterDisplayed = VerifyToasterDisplayed
+
+// function LogoutFunction( {
+//     Click
+// })
+
+exports.SelectAutoComplete = SelectAutoComplete
+function SelectAutoComplete(element, text){
+    cy.wait(500)
+    cy.get(element)
+    .invoke('show')
+    .type('{selectall}{backspace}')
+    .click({
+        force: true,
+    })
+    .type(text)
+    .type('{downarrow}')
+    .type('{downarrow}')
+    .type('{downarrow}')
+    // Css Selector for auto Complete
+  //  cy.get().contains(text).click()
+}
+
+exports.getDateFuture = getDateFuture
+function getDateFuture() {
+    const date = faker.date.between('2024-01-01', '2024-12-01')
+    const myArr = date.toString().split(' ')
+
+    const datePast = myArr[2] + ' '+ 'Aug'+ ' '+myArr[3]
+
+    return datePast
+}
+
+exports.getDatePast = getDatePast
+function getDatePast() {
+    const date = faker.date.between('2024-01-01', '2024-12-01')
+    const myArr = date.toString().split(' ')
+    const datePast = myArr[2] + ' '+ faker.date.month()+ ' ' + myArr[3]
+    return datePast
+}
+
+function SelectEjsDropdownList(element, option){
+    Click(element)
+    cy.get('[]', {
+        timeout: forcedTimeout,
+    })
+    .should('contain.text', option)
+    .contains(option)
+    .click({
+        force: true,
+    })
+}
+exports.SelectEjsDropdownList = SelectEjsDropdownList
+
+function SelectFromEjsAutoComplete(element, option){
+    cy.get(element).invoke('val', option).type('{downarrow}')
+    cy.wait(1000)
+    cy.get('.e-dropdownbase')
+    .should('exist')
+    .should('show')
+    .should('be.visible')
+    .find('.e-list-item', option)
+    .click({force: true})
+}
+exports.SelectFromEjsAutoComplete = SelectFromEjsAutoComplete
+
+function VerifyDoesNotExist(element){
+    cy.get(element).should('not.exist')
+}
+exports.VerifyDoesNotExist = VerifyDoesNotExist
+
+function TypeNotVisible(element, text) {
+    cy.get(element, {
+        timeout: forcedTimeout,
+    })
+        .wait(500)
+        .type(text, {
+            force: true,
+        })
+}
+exports.TypeNotVisible = TypeNotVisible
+
+function DropdownSelect(element, text){
+    cy.get(element)
+    .click({
+        force: true,
+        invoke: true,
+    })
+    .should('be.visible')
+    cy.wait(1000)
+    cy.get('[]').contains(text).dblclick({
+        force: true,
+    })
+}
+exports.DropdownSelect = DropdownSelect
+
+function EjsMultiSelect(element, text){
+    cy.get(element)
+    .click({
+        force: true,
+        invoke: true,
+    })
+    .should('be.visible')
+    cy.wait(1000)
+    cy.get('.e-dropdownbase').find('.e-list-item').click({
+        force: true,
+    })
+}
+exports.EjsMultiSelect = EjsMultiSelect
+
+function ClickOnDropdownItemByValue(value){
+    cy.get("li[data-value='" + value +"']").click()
+}
+
+exports.ClickOnDropdownItemByValue = ClickOnDropdownItemByValue

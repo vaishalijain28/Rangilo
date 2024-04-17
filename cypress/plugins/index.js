@@ -1,4 +1,4 @@
-  <refrence types= "cypress" />
+<refrence types= "cypress" />
 
    /**
     *  @type {Cypress.PluginConfig}

@@ -13,7 +13,7 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
-// Import commands.js using ES2015 syntax:
+// // Import commands.js using ES2015 syntax:
 // import './commands/api-call-commands'
 // import './commands/commands'
 // //index.js inside support folder
@@ -33,5 +33,3 @@
 //     keystrokeDelay: 0,
 // })
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')

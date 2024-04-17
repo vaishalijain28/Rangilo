@@ -44,7 +44,7 @@ module.exports = defineConfig({
   scollBehavior: 'center',
  // downloadsFolder: ''
  e2e: {
- // baseUrl:'https://rrangiloshop.in/',
+  baseUrl:'https://rrangiloshop.in/',
   setupNodeEvents(on, config) {
     const currentEnv = getEnv(`${config.env.envSelected}`)
     config.baseUrl = currentEnv.baseUrl

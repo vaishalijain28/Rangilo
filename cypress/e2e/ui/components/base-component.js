@@ -8,7 +8,7 @@ export class BaseComponent{
   locator(){
     return this.locator
   }
-  Object(){
+  object(){
     return cy.get(this.locator)
   }
 
@@ -22,7 +22,7 @@ export class BaseComponent{
   }
   
   verifyRegexMatch(regexExpression){
-    //cy.get(this.locator).contains(regedxExpression)
+    cy.get(this.locator).contains(regedxExpression)
   }
 
   doesNotHaveText(text){

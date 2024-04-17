@@ -6,11 +6,17 @@ export const TestTag = Object.freeze({
     Regression: '@regression',
     API: "@API",
     UI: "@UI",
-
+    Convertible: "@convertible",
     Login: "@login",
     Reports: "@reports",
     Settings: "@settings",
     Account: "@account",
-    Home: "@home"
+    Home: "@home",
+    Customer: "@customer",
+    Dashboard: "@dashboard",
+    SettingsSystem: "@SettingsSystem",
+    Account: "@account",
+    CustomerGenerator: "@customerGenerator"
+
 
 })

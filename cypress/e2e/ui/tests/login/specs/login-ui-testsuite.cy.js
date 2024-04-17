@@ -14,10 +14,10 @@ describe(
         const customerEmail = Cypress.env('credentials').loginCustomerEmail
         const customerPassword = Cypress.env('credentials').genericCustomerPassword
 
-        beforeEach(()=>{
-           // cy.clearAllBrowserData()
-            landingPage.navigateToLoginPage()
-        })
+        // beforeEach(()=>{
+        //    // cy.clearAllBrowserData()
+        //     landingPage.navigateToLoginPage()
+        // })
     
 
      it(
@@ -26,13 +26,13 @@ describe(
             tags: [
                 TestTag.Login,
                 TestTag.Smoke,
-                TestTag.Regression,
+                TestTag.Regression,    
                 TestTag.AllTpes,
                 TestTag.AllModules,
                 TestTag.UI,
             ],
         },
-        function(){
+        function() {
         loginPage.login({
             username: customerEmail,
             password: customerPassword,
