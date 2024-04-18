@@ -2,9 +2,9 @@ export class BaseComponent{
   constructor(locator){
     this.locator = locator
   }
-  getFileInput(){
-    return cy.get('locator')
-  }
+  // getFileInput(){
+  //   return cy.get('locator')
+  // }
   locator(){
     return this.locator
   }
@@ -74,14 +74,13 @@ export class BaseComponent{
 
   doubleClick(){
     cy.get(this.locator).dbclick({
-      force: true,
+    //  force: true,
     })
-    //cy.get(this.locator).rightclick()
   }
 
-  rightclick() {
-    cy.get(this.locator).rightclick()
-  }
+  // rightclick() {
+  //   cy.get(this.locator).rightclick()
+  // }
 
   isDisplayed(){
     cy.get(this.locator)

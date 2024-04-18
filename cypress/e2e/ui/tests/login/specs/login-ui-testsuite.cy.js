@@ -99,7 +99,7 @@ describe(
         },
         () => {
             loginPage.loginButton.click()
-            loginPage.usernameInput.type('tester@rrangilo.com')
+            loginPage.usernameInput.type('tester@gmail.com')
             loginPage.passwordInput.type('test1234')
             loginPage.loginButton.click()
             cy.contains(
@@ -123,14 +123,15 @@ describe(
         },
         () => {
             loginPage.login({
-                username: CustomerEmail,
-                password: CustomerPassword,
+                username: customerEmail,
+                password: customerPassword,
             })
             loginPage.logoutByUI()
+            loginPage.verifyIfPageLoaded()
             cy.contains(
-                'Delievers real-time, self-service management'
+                'WE HAVE THE BEST PRICE THE BEST PRODUCT '
             )
-             loginPage.verifyIfPageLoaded()
+             
         }
     )
  }

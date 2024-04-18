@@ -28,16 +28,16 @@ function buildEnvReference(envSelected, isATestBed){
     var stripeAPIKey          = applicationKeys.stripeAPIKey
 
 
- if(isATestBed)
-    {   
-        // return{
-        // baseURL     :     testBedBasedURL.replace('{testbednumber}', envSelected).replace('-{isWeb}-', '-web-' ),
-        // apiServer   :   testBedBasedURL.replace('{testbednumber}', envSelected).replace('-{isWeb}-', '-api-' ),
-        // credentials : buildEnvCredentials('dev'),
-        // stripeKey   :   stripeAPIKey
-        // }
+//  if(isATestBed)
+//     {   
+//         return{
+//         baseURL     :     testBedBasedURL.replace('{testbednumber}', envSelected).replace('-{isWeb}-', '-web-' ),
+//         apiServer   :   testBedBasedURL.replace('{testbednumber}', envSelected).replace('-{isWeb}-', '-api-' ),
+//         credentials : buildEnvCredentials('dev'),
+//         stripeKey   :   stripeAPIKey
+//         }
 
-    }
+//     }
 
     return {
     baseUrl: nonTestBedEnvBasedURL.replace('{nonTestBedEnv}', envSelected),
