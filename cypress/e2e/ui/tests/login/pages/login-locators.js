@@ -14,9 +14,12 @@ export const LoginLocatorsMap = {
 
 
 LOGIN_BUTTON: '[class="woocommerce-button button woocommerce-form-login__submit"]',
-EMAIL_INPUT: '',
-PASSWORD_INPUT: '',
+EMAIL_INPUT: 'form[class="woocommerce-form woocommerce-form-login login"] [name="username"]',
+PASSWORD_INPUT: 'form[class="woocommerce-form woocommerce-form-login login"] [name="password"]',
 REGISTER: '[class="woocommerce-Button woocommerce-button button woocommerce-form-register__submit"]',
 LOST_YOUR_PASSWORD: '[class="woocommerce-LostPassword lost_password"]',
 REMEMBER_ME: '[class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme"]',
+EMAIL_FORMAT_ERROR: '',
+EMAIL_REQUIRED_ERROR: '',
+    
 } 
