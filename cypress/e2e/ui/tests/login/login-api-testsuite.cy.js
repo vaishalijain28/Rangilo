@@ -37,7 +37,7 @@ describe (
                     false
                 )
 
-                cy.get('@postResponse').then((postResonse) => {
+                cy.get('@postResponse').then((postResponse) => {
                     expect(postResponse.status).to.eq(200)
                     expect(postResponse.isOKStatusCode).to.eq(true)
                     expect(postResponse.statusText).to.eq('OK')

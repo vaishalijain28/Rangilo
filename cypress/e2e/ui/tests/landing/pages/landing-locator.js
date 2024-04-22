@@ -1,4 +1,4 @@
 export const LandingLocatorsMap ={
-    LOGIN_BUTTON: 'ul[id="ast-hf-menu-2"] li[id="menu-item-5709"]',
+    LOGIN_BUTTON: '[class="woocommerce-button button woocommerce-form-login__submit"]',
  //   LOGO_IMAGE: ''
 }

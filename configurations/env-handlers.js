@@ -17,7 +17,8 @@ exports.getEnv = function (envSelected){
         'dev'      : buildEnvReference('dev', false),
         'staging'  : buildEnvReference('staging', false)
     }
-
+    
+    //Setting Staging as default in case it doesn't find any match
     return (envList[envSelected] || envList['staging'])
 }
 
@@ -28,30 +29,33 @@ function buildEnvReference(envSelected, isATestBed){
     var stripeAPIKey          = applicationKeys.stripeAPIKey
 
 
-//  if(isATestBed)
-//     {   
-//         return{
-//         baseURL     :     testBedBasedURL.replace('{testbednumber}', envSelected).replace('-{isWeb}-', '-web-' ),
-//         apiServer   :   testBedBasedURL.replace('{testbednumber}', envSelected).replace('-{isWeb}-', '-api-' ),
-//         credentials : buildEnvCredentials('dev'),
-//         stripeKey   :   stripeAPIKey
-//         }
+ if(isATestBed)
+    {   
+        return{
+   //     baseURL     :  testBedBasedURL.replace('{testbednumber}', envSelected).replace('-{isWeb}-', '-web-' ),
+    //    apiServer   :  testBedBasedURL.replace('{testbednumber}', envSelected).replace('-{isWeb}-', '-api-' ),
+        credentials :  buildEnvCredentials('dev'),
+        stripeKey   :  stripeAPIKey,
+        envName     :  `testbed${envSelected}`
+        }
 
-//     }
+    }
 
     return {
     baseUrl: nonTestBedEnvBasedURL.replace('{nonTestBedEnv}', envSelected),
     apiServer: nonTestBedEnvBasedURL.replace('{nonTestBedEnv}', envSelected+apiReference),
     credentials : buildEnvCredentials(envSelected),
-    stripeKey: stripeAPIKey
+    stripeKey: stripeAPIKey,
+    envName : envSelected
     }
 }
 
 function buildEnvCredentials(envSelected){
     var envConfig = {
-        'dev': devCredentials,
-        'staging': stagingCredentials
+        'dev'    :  devCredentials,
+        'staging':  stagingCredentials
     }
 
+    //Setting Staging as default in case it doesn't find any match
     return (envConfig[envSelected] || envConfig['staging'])
 }

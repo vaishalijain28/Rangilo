@@ -1,6 +1,7 @@
-import {LoginPage} from "../pages/login-page"
-import { LandingPage } from "../../landing/pages/landing-page"
+import {LoginPage} from "../pages/login-page.js"
+import { LandingPage } from "../../landing/pages/landing-page.js"
 import { TestTag } from "../../../constants/test-tags-constants"
+//import {staging-credentials}
 
 const loginPage = new LoginPage()
 const landingPage = new LandingPage()
@@ -14,20 +15,20 @@ describe(
         const customerEmail = Cypress.env('credentials').loginCustomerEmail
         const customerPassword = Cypress.env('credentials').genericCustomerPassword
 
-        // beforeEach(()=>{
-        //    // cy.clearAllBrowserData()
-        //     landingPage.navigateToLoginPage()
-        // })
+        beforeEach(()=>{
+            cy.clearAllBrowserData()
+            landingPage.navigateToLoginPage()
+        })
     
 
      it(
         'TC:001 (Login) Verify Successful customer login <Positive>',
-        {
+        {   
             tags: [
                 TestTag.Login,
                 TestTag.Smoke,
                 TestTag.Regression,    
-                TestTag.AllTpes,
+                TestTag.AllTypes,
                 TestTag.AllModules,
                 TestTag.UI,
             ],
@@ -49,7 +50,7 @@ describe(
                     TestTag.Login,
                     TestTag.Smoke,
                     TestTag.Regression,
-                    TestTag.AllTpes,
+                    TestTag.AllTypes,
                     TestTag.AllModules,
                     TestTag.UI,
                 ],
@@ -71,7 +72,7 @@ describe(
             tags: [
                 TestTag.Login,
                 TestTag.Regression,
-                TestTag.AllTpes,
+                TestTag.AllTypes,
                 TestTag.AllModules,
                 TestTag.UI,
             ],
@@ -87,12 +88,12 @@ describe(
     )
 
     it(
-        `TC: 004 -(Login) Validate that the system rejects Login with invalid credentials <negative> `,
+        `TC: 004 -(Login) Validate that the system rejects Login with invalid credentials <negative>`,
         {
             tags: [
                 TestTag.Login,
                 TestTag.Regression,
-                TestTag.AllTpes,
+                TestTag.AllTypes,
                 TestTag.AllModules,
                 TestTag.UI,
             ],
@@ -103,20 +104,20 @@ describe(
             loginPage.passwordInput.type('test1234')
             loginPage.loginButton.click()
             cy.contains(
-                'You have entered invalid username or password. Verify your information and try again later'
+                'You have entered invalid username or password. Verify your information and try again later!'
             )
         }
     )
 
 
     it(
-        `TC: 005 -(Login) Validate that the system can logout successfully <positive> `,
+        `TC: 005 -(Login) Validate that the system can logout successfully <positive>`,
         {
             tags: [
                 TestTag.Login,
                 TestTag.Smoke,
                 TestTag.Regression,
-                TestTag.AllTpes,
+                TestTag.AllTypes,
                 TestTag.AllModules,
                 TestTag.UI,
             ],

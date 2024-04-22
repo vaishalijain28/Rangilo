@@ -21,7 +21,8 @@ export const TestTag = Object.freeze({
     Cart: "@cart",
     Shop: "@shop",
     Home : "@home",
-    Search: "@search",
+    Search: "@search"
+   
     
 
 })

@@ -114,27 +114,42 @@ export class MenuPage {
 
     NavigateToIndianHerbsPage() {
         cy.log('Navigating to Indian Herbs Page by UI')
+        this.allCategoriesButton.click()
+        this.pulsesButton.click()
+        cy.wait(1000)
         
     }
 
     NavigateToDryFruitsPage() {
         cy.log('Navigating to Dry Fruits Page by UI')
+        this.allCategoriesButton.click()
+        this.DryFruitsButton.click()
+        cy.wait(1000)
         
     }
 
     NavigateToReadyToEatPage() {
         cy.log('Navigating to Ready To Eat Page by UI')
+        this.allCategoriesButton.click()
+        this.ReadyToEatButton.Click()
+        cy.wait(1000)
         
         
     }
 
     NavigateToReadyToCookPage() {
         cy.log('Navigating to Ready To Cook Page by UI')
+        this.allCategoriesButton.click()
+        this.ReadyToCookButton.click()
+        cy.wait(1000)
         
     }
 
     NavigateToPohaAndBesanPage() {
         cy.log('Navigating to Poha and Besan Page by UI')
+        this.allCategoriesButton.click()
+        this.PohaAndBesanButton.click()
+        cy.wait(1000)
         
     }
 }
