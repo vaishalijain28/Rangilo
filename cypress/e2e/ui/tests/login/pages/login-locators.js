@@ -20,7 +20,7 @@ REGISTER: '[class="woocommerce-Button woocommerce-button button woocommerce-form
 LOST_YOUR_PASSWORD: '[class="woocommerce-LostPassword lost_password"]',
 REMEMBER_ME: '[class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme"]',
 EMAIL_FORMAT_ERROR: '[class="woocommerce-error"]',
-EMAIL_REQUIRED_ERROR: '',
-PASSWORD_REQUIRED_ERROR: '',
-    
+EMAIL_REQUIRED_ERROR: '#email-required',
+PASSWORD_REQUIRED_ERROR: '#password-required'
+//LOGOUT_BUTTON: ''
 } 

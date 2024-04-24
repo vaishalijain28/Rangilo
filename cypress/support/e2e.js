@@ -15,12 +15,12 @@
 
 // // Import commands.js using ES2015 syntax:
 // import './commands/api-call-commands'
-// import './commands/commands'
+ import './commands/commands'
 // //index.js inside support folder
 // import 'cypress-mochawasome-reporter/register'
 
 // require('./commands/api-call-commands')
-// require('./commands/commands')
+ require('./commands/commands')
 
 // const registerCypressgrep = require('@cypress/grep')
 // registerCypressgrep()

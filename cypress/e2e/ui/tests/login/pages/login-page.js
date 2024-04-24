@@ -10,10 +10,10 @@ export class LoginPage{
         this.passwordInput = new InputComponent(LoginLocatorsMap.PASSWORD_INPUT)
         this.loginButton = new ButtonComponent(LoginLocatorsMap.LOGIN_BUTTON)
         this.logoutButton = new ButtonComponent(LoginLocatorsMap.LOGOUT_BUTTON)
-   //    this.profileIcon = new IconComponent(LoginLocatorsMap.PROFILE_ICON)
+        this.profileIcon = new IconComponent(LoginLocatorsMap.PROFILE_ICON)
         this.usernameErrorEmailFormatLabel = new LabelComponent(LoginLocatorsMap.EMAIL_FORMAT_ERROR)
-        // this.usernameErrorEmailRequiredLabel = new LabelComponent(LoginLocatorsMap.EMAIL_REQUIRED_ERROR)
-       // this.passwordErrorLabel = new LabelComponent(LoginLocatorsMap.P)
+        this.usernameErrorEmailRequiredLabel = new LabelComponent(LoginLocatorsMap.EMAIL_REQUIRED_ERROR)
+        this.passwordErrorLabel = new LabelComponent(LoginLocatorsMap.PASSWORD_REQUIRED_ERROR)
     }
 
 

@@ -1,8 +1,8 @@
-const devCredentials = require('./dev-credentials.json')
-const stagingCredentials = require('./staging-credentials.json')
-const applicationKeys = require('./application-keys.json')
+import devCredentials from './dev-credentials.json'
+import stagingCredentials from './staging-credentials.json'
+import {stripeAPIKey } from './application-keys.json'
 
-exports.getEnv = function (envSelected){
+export function getEnv (envSelected){
     var envList = {
         'testBed1' : buildEnvReference('one', true),
         'testBed2' : buildEnvReference('two', true),
@@ -26,7 +26,7 @@ function buildEnvReference(envSelected, isATestBed){
    // var TestBedBasedURL     = 'https://ast-azapp-{isWeb}-dynamic-testbed-{testbednumber}.azurewebsites.net'
     var nonTestBedEnvBasedURL = 'https://{nonTestBedEnv}.rrangiloshop.in'
     var apiReference          = '-api'
-    var stripeAPIKey          = applicationKeys.stripeAPIKey
+    var stripeAPIKey          = _stripeAPIKey
 
 
  if(isATestBed)

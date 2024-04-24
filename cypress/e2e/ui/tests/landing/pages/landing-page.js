@@ -7,22 +7,22 @@ export class LandingPage{
     constructor(){
 
        this.loginbutton = new ButtonComponent(LandingLocatorsMap.LOGIN_BUTTON)
-       this.loginRightsLabel = new LabelComponent(
-        LandingLocatorsMap.LOGIN_RIGHTS
-       )
+    //    this.loginRightsLabel = new LabelComponent(
+    //     LandingLocatorsMap.LOGIN_RIGHTS
+    //    )
 
     //    this.contactLabel = new LabelComponent(LandingLocatorsMap.CONTACT_LABEL)
     //    this.questionLabel = new LabelComponent(LandingLocatorsMap.QUESTIONS_LABEL)
 
-       this.logoImage = new ImageComponent(LandingLocatorsMap.LOGO_IMAGE)
+    //   this.logoImage = new ImageComponent(LandingLocatorsMap.LOGO_IMAGE)
     }
 
-    navigateToLoginPage()
-    {
-        cy.visit('/entry')
-        this.#verifyIfThePageLoaded()
-        this.loginbutton.click()
-    }
+    // navigateToLoginPage()
+    // {
+    //     cy.visit('/entry')
+    //     this.#verifyIfThePageLoaded()
+    //     this.loginbutton.click()
+    // }
     #verifyIfThePageLoaded(){
         cy.contains('')
     }

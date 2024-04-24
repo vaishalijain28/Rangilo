@@ -13,7 +13,5 @@ export const MenuLocatorMap = {
     DRY_FRUITS_BUTTON: '',
     READY_TO_EAT_BUTTON: '',
     READY_TO_COOK_BUTTON: '',
-    POHA_BESAN_BUTTON: ''
-
-     
+    POHA_BESAN_BUTTON: '' 
 }

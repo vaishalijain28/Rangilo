@@ -1,12 +1,12 @@
-const { defineConfig } = require('cypress')
-const { getEnv } = require('./configurations/env-handlers')
+import { defineConfig } from 'cypress'
+import { getEnv } from './configurations/env-handlers'
 // const {
 //   beforeRunHook, 
 //   afterRunHook,
 // } = require('cypress-mochawesome-reporter/lib')
 
 
-module.exports = defineConfig({
+export default defineConfig({
   waitForAnimations: false,
   video: false,
   chromeWebSecurity: false,
@@ -50,7 +50,7 @@ module.exports = defineConfig({
     config.baseUrl = currentEnv.baseUrl
     config.env.api_server = currentEnv.apiServer
     config.env.credentials = currentEnv.credentials
-    config.env.stipe_api_key = currentEnv.stipe_api_key
+    config.env.stripe_api_key = currentEnv.stripe_api_key
 
     on('before:run' , async(details) =>{
       console.log('override before:run')

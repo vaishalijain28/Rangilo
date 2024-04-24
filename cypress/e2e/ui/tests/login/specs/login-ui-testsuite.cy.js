@@ -1,7 +1,7 @@
 import {LoginPage} from "../pages/login-page.js"
 import { LandingPage } from "../../landing/pages/landing-page.js"
 import { TestTag } from "../../../constants/test-tags-constants"
-//import {staging-credentials}
+ 
 
 const loginPage = new LoginPage()
 const landingPage = new LandingPage()
@@ -15,10 +15,10 @@ describe(
         const customerEmail = Cypress.env('credentials').loginCustomerEmail
         const customerPassword = Cypress.env('credentials').genericCustomerPassword
 
-        beforeEach(()=>{
-            cy.clearAllBrowserData()
-            landingPage.navigateToLoginPage()
-        })
+        // beforeEach(()=>{
+        //     cy.clearAllBrowserData()
+        //     landingPage.navigateToLoginPage()
+        // })
     
 
      it(
