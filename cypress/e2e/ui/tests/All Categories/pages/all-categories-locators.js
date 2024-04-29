@@ -1,4 +1,5 @@
 export const AllCategoriesLocatorMap = {
+    
     SALT_SPICES_BUTTON: '[aria-label="Visit product category Salt & Spices"]',
     DRY_FRUITS_BUTTON: '[aria-label="Visit product category Dry Fruits"]',
     INDIAN_HERBS_BUTTON: '[aria-label="Visit product category Indian Herbs"]',

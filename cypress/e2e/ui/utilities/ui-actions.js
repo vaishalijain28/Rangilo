@@ -123,6 +123,7 @@ function Type(element, text){
         )
         .should('have.value', text)
 }
+
 exports.Type = Type
 
 function ValidationsType(field, data, message) {

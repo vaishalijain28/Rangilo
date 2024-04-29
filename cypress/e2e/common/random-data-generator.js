@@ -78,9 +78,9 @@ const envName = Cypress.env('envName')
             return dateModified
                 .toLocaleDateString('en-GB', {
                     weekday: undefined,
-                    year: 'numeric',
-                    month: 'short',
-                    day: '2-digit'
+                    year : 'numeric',
+                    month : 'short',
+                    day : '2-digit'
                 })
                 .replace(',', '')
         } else {

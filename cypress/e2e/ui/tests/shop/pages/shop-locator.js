@@ -5,6 +5,5 @@ export const ShopLocatorMap = {
     POHA_BESAN_BUTTON: '[aria-label="Visit product category Poha & Besan"]',
     PULSES_BUTTON: '[aria-label="Visit product category Pulses"]',
     READY_TO_EAT_BUTTON: '[aria-label="Visit product category Ready To Cook"]',
-    READY_TO_COOK_BUTTON: '[aria-label="Visit product category Ready To Eat"]',
-    
+    READY_TO_COOK_BUTTON: '[aria-label="Visit product category Ready To Eat"]'
 }

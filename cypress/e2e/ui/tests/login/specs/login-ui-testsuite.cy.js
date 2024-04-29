@@ -10,8 +10,8 @@ describe(
     'Login Suite',
     {
        tags: TestTag.Login,
-    },
-    function(){
+    }, 
+    function() {
         const customerEmail = Cypress.env('credentials').loginCustomerEmail
         const customerPassword = Cypress.env('credentials').genericCustomerPassword
 
